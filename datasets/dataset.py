@@ -13,10 +13,11 @@ import torch.utils.data as data
 
 from torchvision.ops.boxes import clip_boxes_to_image
 from PIL import Image
-try:
-    from scipy.misc import imread
-except ImportError:
-    from scipy.misc.pilutil import imread
+# try:
+#     from scipy.misc import imread
+# except ImportError:
+#     # from scipy.misc.pilutil import imread
+#     from imageio import imread
 import random
 import json
 class Dataset(data.Dataset):
