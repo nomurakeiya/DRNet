@@ -244,6 +244,7 @@ class TestDataset(data.Dataset):
     def __init__(self,scene_name, base_path, main_transform=None, img_transform=None, interval=1, target=True, datasetname='Empty'):
         self.base_path = base_path
         self.target = target
+        print("base_path", base_path)
 
         # import  pdb
         # pdb.set_trace()
@@ -306,7 +307,10 @@ class TestDataset(data.Dataset):
             return int(p.findall(string)[1])
 
         img_path = []
+        print(self.base_path)
         root = osp.join(self.base_path, i +'/img1')
+        root = os.path.join("DRNet", root)
+        print(root)
         img_ids = os.listdir(root)
         img_ids.sort(key=myc)
 

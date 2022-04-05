@@ -1,8 +1,8 @@
-import datasets
+import dataset
 from  config import cfg
 import numpy as np
 import torch
-import datasets
+import dataset
 from misc.utils import *
 from model.VIC import Video_Individual_Counter
 from tqdm import tqdm
@@ -49,7 +49,7 @@ opt.output_dir = opt.output_dir+'_'+opt.DATASET
 
 def test(cfg_data):
     net = Video_Individual_Counter(cfg, cfg_data)
-    test_loader, restore_transform = datasets.loading_testset(opt.DATASET, test_interval=opt.test_intervals, mode='test')
+    test_loader, restore_transform = dataset.loading_testset(opt.DATASET, test_interval=opt.test_intervals, mode='test')
     state_dict = torch.load(opt.model_path)
     net.load_state_dict(state_dict, strict=True)
     net.eval()
@@ -216,7 +216,7 @@ if __name__=='__main__':
 
     # ------------prepare data loader------------
     data_mode = opt.DATASET
-    datasetting = import_module(f'datasets.setting.{data_mode}')
+    datasetting = import_module(f'dataset.setting.{data_mode}')
     cfg_data = datasetting.cfg_data
 
     pwd = os.path.split(os.path.realpath(__file__))[0]

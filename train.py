@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from torch import optim
-import datasets
+import dataset
 from misc.utils import *
 from model.VIC import Video_Individual_Counter
 from tqdm import tqdm
@@ -16,7 +16,7 @@ class Trainer():
         self.exp_path = cfg.EXP_PATH
         self.pwd = pwd
         self.net = Video_Individual_Counter(cfg, cfg_data)
-        self.train_loader, self.val_loader, self.restore_transform = datasets.loading_data(cfg.DATASET, cfg.VAL_INTERVALS)
+        self.train_loader, self.val_loader, self.restore_transform = dataset.loading_data(cfg.DATASET, cfg.VAL_INTERVALS)
 
         params = [
             {"params": self.net.Extractor.parameters(), 'lr': cfg.LR_Base, 'weight_decay': cfg.WEIGHT_DECAY},
@@ -291,7 +291,7 @@ if __name__=='__main__':
     import random
     import numpy as np
     import torch
-    import datasets
+    import dataset
     from config import cfg
     from importlib import import_module
     # ------------prepare enviroment------------

@@ -1,9 +1,9 @@
-import datasets
+import dataset
 from  config import cfg
 import numpy as np
 import torch
 from torch import optim
-import datasets
+import dataset
 from misc.utils import *
 from model.VIC import Video_Crowd_Counting
 from tqdm import tqdm
@@ -53,7 +53,7 @@ parser.add_argument(
 #     help='pretrained weight path')
 
 opt = parser.parse_args()
-from datasets.dataset import TestDataset
+from dataset.dataset import TestDataset
 from torch.utils.data import  DataLoader
 import torchvision.transforms as standard_transforms
 import misc.transforms as own_transforms

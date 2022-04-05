@@ -1,8 +1,8 @@
-import datasets
+import dataset
 from  config import cfg
 import numpy as np
 import torch
-import datasets
+import dataset
 from misc.utils import *
 from model.VIC import Video_Individual_Counter
 from tqdm import tqdm
@@ -59,7 +59,7 @@ def test(cfg_data):
         line = line.rstrip().split(' ')
         scene_label.update({line[0]: [int(i) for i in line[1:]] })
 
-    test_loader, restore_transform = datasets.loading_testset(opt.DATASET, test_interval=opt.test_intervals,mode='test')
+    test_loader, restore_transform = dataset.loading_testset(opt.DATASET, test_interval=opt.test_intervals,mode='test')
 
     state_dict = torch.load(opt.model_path)
     net.load_state_dict(state_dict, strict=True)
